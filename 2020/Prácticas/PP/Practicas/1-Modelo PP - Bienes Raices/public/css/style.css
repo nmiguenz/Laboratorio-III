@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+}
+
+#tablaLista{
+    /* border: 1px solid black; */
+    width: 70%;
+    text-align: center;
+}
+
+
+
+input {
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgb(202, 202, 202);
+    color:rgb(0, 53, 0);
+}
+
+#tablaLista{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr, td, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+    cursor: pointer;
+}
+
+/* #bodyTabla{
+    text-align: center;
+    border: 1px solid black;
+} */

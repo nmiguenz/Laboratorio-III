@@ -1,0 +1,32 @@
+body{
+    
+}
+
+header, footer{
+    background-color: black ;
+}
+
+a{
+    color: cornsilk;
+    margin-left: 1rem;
+}
+
+button{
+    margin: 1rem;
+}
+
+p{
+    color: cornsilk;
+}
+
+.filtros{
+    background-color: gray;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.inputIcono{
+    padding-left: 0;
+}

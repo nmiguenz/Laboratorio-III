@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/despachador_server.js"></script>
+    <title>Bienes Raices</title>
+</head>
+<body>
+    <h1>Llena el Formulario de Alta</h1>
+    <br><br>
+    <form action="" id="myForm">
+
+        <fieldset>
+            <legend>Información del anuncio</legend>
+            
+            <label for="txtTitulo">TITULO</label>
+            <br>
+            <input type="text" name="titulo" id="txtTitulo" placeholder="Casa con piscina" required>
+            <br><br>
+
+            <label for="rdoAlquiler">TRANSACCION</label>
+            <br><br>
+            <label for="rdoVenta">VENTA</label>
+            <input type="radio" name="transaccion" id="rdoVenta">
+            <br>
+            <label for="rdoAlquiler">ALQUILER</label>
+            <input type="radio" name="transaccion" id="rdoAlquiler" checked>
+            <br><br>
+
+            <label for="txtDescripcion">DESCRIPCION</label>
+            <br>
+            <input type="text" name="descripcion" id="txtDescripcion" placeholder="Ingrese una descripcion para la propiedad" required>
+            <br><br>
+
+            <label for="txtPrecio">PRECIO</label>
+            <br>
+            <input type="number" name="precio" id="txtPrecio" min="1" required>
+            <br><br>
+
+            <label for="txtBanos">CANTIDAD DE BAÑOS</label>
+            <br>
+            <input type="number" name="banos" id="txtBanos" min="0" required>
+            <br><br>
+
+            <label for="txtAutos">CANTIDAD DE AUTOS</label>
+            <br>
+            <input type="number" name="autos" id="txtAutos" min="0" required>
+            <br><br>
+
+            <label for="txtDormitorios">CANTIDAD DE DORMITORIOS</label>
+            <br>
+            <input type="number" name="dormitorios" id="txtDormitorios" min="0" required>
+            <br><br>
+
+        </fieldset>
+
+        <button type="submit" id="btnGuardar">Guardar</button>
+    </form>
+    
+    <hr>
+
+    <div id="botonesForm" style="display: none;">
+        <button type="submit" id="btnGuardar">Guardar</button>
+        <button type="submit" id='btnBaja'>Eliminar</button>
+        <button type="reset" id='btnCancelar'>Cancelar</button>
+    </div>
+    <div id="divTabla" >
+        <table id="tablaLista" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>titulo</th>
+                    <th>transaccion</th> 
+                    <th>descripcion</th>
+                    <th>precio</th>
+                    <th>num_wc</th>
+                    <th>num_estacionamiento</th>
+                    <th>num_dormitorio</th>
+                </tr>
+            </thead>
+            <tbody id="bodyTabla">
+
+            </tbody>
+        </table>
+    </div>
+    <div id="divSpinner">
+        <img src="./img/spinner.gif" alt="spinner de carga" id="spinner">
+    </div>
+</body>
+</html>

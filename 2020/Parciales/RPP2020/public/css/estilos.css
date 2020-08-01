@@ -1,0 +1,222 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+main{
+    display: flex;
+    /* box-sizing determina el tamano de la caja. Si es border-box significa que tambien cuenta el borde como parte del ancho total */
+    /* box-sizing: content-box; */
+    justify-content: center;
+}
+
+header{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+/* .menu{
+    float: left;
+} */
+
+nav.menu{
+    display: flex;
+    flex-direction: row;
+}
+
+ul > li{
+    padding-top: auto;
+    display: inline-flex;
+}
+
+a{
+    font-size: small;
+    color: white;
+    text-decoration: none;
+    padding-left:0.5rem;
+}
+
+a:hover{
+    color: rgb(233, 83, 83);
+}
+
+.section1{
+    box-sizing: border-box;
+    display: inline;
+}
+
+.section1 h1{
+    text-align: center;
+}
+
+img.banner{
+    width: 100%;
+}
+
+fieldset{
+    /* INLINE permite ajustar los bordes al ancho del contenido de un elemento */
+    display: inline-block;
+    width: auto;
+}
+
+label{
+    font-weight: 500;
+}
+
+input{
+    background-color: rgb(225, 225, 225);
+    width: 100%;
+    box-sizing: border-box;
+    border-style: none;
+    border-radius: 5px;
+    padding:0.3rem 0 0.3rem 0.3rem;
+    margin-right:  1.5px;
+}
+
+select {
+    background-color: rgb(225, 225, 225);
+    width: 100%;
+    box-sizing: border-box;
+    border-style: none;
+    border-radius: 5px;
+    padding:0.3rem 0 0.3rem 0.3rem;
+  }
+
+div#formFila{
+      display: flex;
+}
+
+@media (max-width: 600px) {
+    div#formFila{
+        flex-wrap: wrap;
+    }
+    input[type=number]{
+        width: 85%;
+    }
+}     
+
+/* Arranca todo lo que esta en SECTION TABLA */
+
+section.seccionTabla{
+    display: flex;
+    /* box-sizing determina el tamano de la caja. Si es border-box significa que tambien cuenta el borde como parte del ancho total */
+    /* box-sizing: content-box; */
+    flex-direction: column;
+    justify-content: center;
+}
+
+div#spinner{
+    margin: auto;
+}
+
+div#botonesTabla{
+    /* INLINE permite ajustar los bordes al ancho del contenido de un elemento */
+    display: flex;
+    width: auto;
+    margin:auto;
+
+}
+
+button#btnGuardar{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 16px ;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button#btnGuardar img{
+    margin-right: 0.5rem;
+}
+
+button#btnBaja{
+    border: solid;
+    border-color: rgb(244, 67, 54);
+    color: rgb(244, 67, 54);
+    border-radius: 0.5rem;
+    padding: 12px 16px ;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button#btnBaja:hover{
+    background-color: rgb(244, 67, 54);
+    border-color: rgb(248, 20, 3);
+    color: white;
+}
+
+button#btnModificar{
+    border: solid;
+    border-color: rgb(255, 221, 32);
+    color: black;
+    border-radius: 0.5rem;
+    padding: 12px 16px ;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button#btnModificar:hover{
+    background-color: rgb(255, 221, 32);
+    border-color: rgb(246, 250, 0);
+    color: white;
+}
+
+button#btnCancelar{
+    border: solid;
+    border-color: black;
+    color: black;
+    border-radius: 0.5rem;
+    padding: 12px 16px ;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button#btnCancelar:hover{
+    background-color: rgb(61, 58, 58);
+    border-color: black;
+    color: white;
+}
+
+div#divTabla{
+    overflow-x: auto;
+}
+
+table#tabla{
+    border-collapse: collapse;
+    /* width: 80%; */
+    margin: auto;
+    
+}
+
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 0.2rem;
+    margin: 0;
+    background-color:rgb(233, 83, 83);
+}
+
+td{
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid black;
+    padding: 0.2rem;
+    margin: 0;
+}
+
+footer{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+p{
+    color:white;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="./dist/anuncio.js"></script>
+    <script src="./dist/anuncio_auto.js"></script>
+    <script src="./dist/index.js" defer></script>
+    <title>Recuperatorio Primer Parcial</title>
+</head>
+<body>
+    <header>
+        <a href="./"><img src="./img/logo.png" alt="Logo marca"/></a>
+        <nav class="menu">
+            <ul style="padding-top: 16px">
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Anuncio</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </nav>
+    </header>
+    
+    <section class="section1">
+        <h1>Administración</h1>
+        <img src="./img/banner.png" alt="banner_autos" class="banner">
+    </section>
+    
+    <main>
+
+        <form action="#" id="myForm">
+            <fieldset>
+                <legend>Información del anuncio</legend>
+                
+                <label for="txtTitulo">TITULO:</label>
+                <input type="text" placeholder="Titulo" id="txtTitulo" required>
+                <br><br>
+                <label for="transaccion">TRANSACCION:</label>
+                <select class=""  name="transaccion" id="transaccion" required>
+                    <option value="" disabled selected>---Elegir Transacción---</option>
+                    <option value="venta" id="venta">Venta</option>
+                    <option value="alquiler" id="alquiler">Alquiler</option>
+                    <option value="permuta" id="permuta">Permuta</option>
+                </select>
+                <br><br>
+                <label for="txtTitulo">DESCRIPCIÓN:</label>
+                <input type="text" placeholder="Descripción" id="txtDescripcion" required>
+                <br><br>
+                <label for="txtTitulo">PRECIO:</label>
+                <input type="text" placeholder="Precio" id="txtPrecio" min="1" required>
+                <br><br>
+                <div id="formFila">
+                    <img src="./img/puerta.png" alt="puerta de auto" height="22px">
+                    <input type="number" id="txtPuertas" placeholder="Puertas (3 a 7)" min="3" max="7" required>
+        
+                    <img src="./img/tablero.png" alt="velocimetro de auto" height="22px">
+                    <input type="number" id="txtKilometros" placeholder="KMs" min="0" required>
+            
+                    <img src="./img/caja-de-cambios.png" alt="Potencia" height="22px">
+                    <input type="number" id="txtPotencia" placeholder="Potencia" max="410" required>
+                </div>
+    
+            </fieldset>
+            <br>
+            <button type="submit" id="btnGuardar"><img src="./img/salvar.png" alt="diskette" height="15px">GUARDAR</button>
+            <div id="botonesTabla" style="display: none;">
+                <button type="button" id="btnModificar" >Modificar</button>
+                <button type="button" id='btnBaja' >Eliminar</button>
+                <button type="reset"  id='btnCancelar'>Cancelar</button>
+            </div>
+        </form>
+        
+    </main>
+    <br>
+    <section class="seccionTabla">
+        <div id="spinner"></div>
+        <div id="divTabla">
+            <table id="tabla">
+                
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <nav class="menu">
+            <ul>
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Anuncio</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </nav>
+        <p>Todos los derechos reservados 2020 &COPY;</p>
+    </footer>
+    
+</body>
+</html>
