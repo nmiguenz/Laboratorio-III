@@ -1,0 +1,11 @@
+.spiner{
+    /* background-color: gray; */
+    /* opacity: 0.2; */
+    width: 50%;
+    height: 50%;
+    position: fixed;
+    bottom: 25%;
+    right: 25%;
+    border-radius: 5px;
+    /* padding: 20px; */
+}

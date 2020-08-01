@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form name="formulario">
+        <input type="text" name="elem" id="idelem" value="Value del elemento">
+    </form>
+    <script>
+
+        $(document).ready(function(){
+            var division = $("<div>");
+            division.html('Esto es una division... <a id = "cancelar" href="#">Aceptar</a>');
+            division.css({
+                background: 'pink',
+                border: "2px solid #999",
+                width: '50%' ,
+                padding: '1rem',
+                position: 'relative',
+                marginTop: '25%',
+                marginLeft: '25%',
+            })
+            division.appendTo('form');
+
+            $('cancelar').on('click', function(){
+                alert('hola');
+            });
+        });
+
+        
+
+        
+
+    </script>
+</body>
+</html>

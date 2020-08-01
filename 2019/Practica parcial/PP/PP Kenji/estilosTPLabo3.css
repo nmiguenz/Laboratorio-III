@@ -1,0 +1,265 @@
+html, body{
+    font-family: 'Lato', sans-serif;
+    margin:0px;
+    height: 100%;
+    color: white;
+}
+
+header{
+    background-image: url("./img/header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 100%;
+}
+
+h1{
+    font-size: 14.5pt;
+    margin-bottom: 30px;
+    line-height: 30px;
+    margin-left: 20%;
+    font-weight: 200;
+}
+
+h2{
+    font-weight: 100;
+    text-align: center;
+    font-size: 13pt;
+    color:black;
+}
+
+h3{
+    font-weight:600;
+    color:black;
+    font-size: 11.5pt;
+    margin-bottom: 10px;
+
+}
+
+p{
+    color:black;
+    font-size: 6pt;
+    line-height: 13px;
+}
+
+nav{
+    margin: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 7pt;
+}
+
+.rowDiv{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.spaceAround{
+    justify-content: space-around;
+    
+}
+
+.columnDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.spaceBetween{
+    justify-content: space-between;
+    
+}
+
+.itemSobre{
+    width: 100%;
+    text-align: center;
+}
+
+.imgItem{
+    height: 30%;
+    width: auto;
+}
+
+#masSobreNosotros{
+    width: 50%;
+    margin-left:25%;
+}
+
+.itemsSobre{
+    display:flex;
+    justify-content: center;
+}
+
+.fotoCasa{
+    width:100%;    
+}
+#enVenta{
+    width: 50%;
+    margin-left: 25%;
+}
+.casasEnVenta{
+    display:flex;
+    justify-content: center;
+}
+
+.precio{
+    color: green;
+}
+
+.verPropBtn{
+    background-color: rgb(228, 149, 3);
+    border:none;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: 7pt;
+    font-weight: bold;
+}
+.verTodasDiv{
+    display:flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    margin-top: 10px;
+
+}
+.verTodas{
+    background-color: rgb(48, 170, 48);
+    border:none;
+    width: 100px;
+    padding: 8px;
+    color: white;
+    font-size: 7pt;
+    font-weight: bold;
+}
+
+.verPropBtn:hover{
+    cursor: pointer;
+}
+
+.iconoCasa{
+    height: 15px;
+}
+.featsCasa{
+    height: 50%;
+    display:flex;
+    justify-content: space-around;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.casaEnVenta{
+    background-color: rgb(230, 230, 230);
+    margin-left: 5px;
+    margin-right: 5px;
+    border-style:solid;  
+    border-color: rgb(170, 170, 170);
+    border-width: 0.5px;
+
+}
+
+.descCasa{
+    padding: 10px;    
+    justify-content: center;
+
+}
+
+#encuentra{
+    padding-left:15%;
+    margin-top: 10px;
+    background-image: url("./img/encuentra.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+.blanco{
+    color: white;
+}
+#blogYComentarios{
+    display: flex;
+    width: 50%;
+    margin-left: 25%;
+}
+#contactanos{
+    background-color: rgb(228, 149, 3);
+    border:none;
+    width   : 100px;
+    padding: 8px;
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+}
+#nuestroBlog{
+    width: 60%;
+}
+
+#comentarios{
+    width: 40%;
+}
+.fotoblog{
+    width: 35%;
+}
+
+
+
+.blogBlock{
+    display:flex;
+    flex-direction: row;
+    margin: 7px;
+}
+
+.reseña{
+    width: 100%;
+    margin: 20px;
+    background-color: rgb(59, 187, 59);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.autorComment{
+    color:white;
+    text-align: end;
+    font-size: 9pt;
+
+}
+
+.divisorVerde{
+    width: 40%;
+    height: 3.5px;
+    background-color: rgb(33, 163, 33);
+}
+
+.descBlog{
+    margin-left: 8px;
+}
+
+footer{
+    background-color: rgb(66, 66, 66);
+    display:flex;
+    justify-content: space-around;
+}   
+
+.comilla{
+    margin-top: -80px;
+}
+
+.comentario{
+    width: 60%;
+    font-size: 9pt;
+    line-height: 20pt;
+}
+
+.rights{
+    position: relative;
+
+}
+span.time{
+    color: orange;
+}

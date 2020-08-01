@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after{
+    margin:0;
+    padding: 0;
+    font-size: 62.5%;
+    box-sizing: inherit;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    box-sizing: border-box;
+    background-color: white;;
+    flex: auto;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.form{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    border: .2rem solid black;
+    font-size: 2rem;
+    width: 20vw;
+    margin: 20rem auto;
+    /*margin: 20rem 50rem 20rem 50rem; */
+    padding: 2rem;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+.txt{
+    margin: .5rem;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: .3rem;
+    border: .1rem solid lightslategrey;
+    padding-left: .5rem;
+}
+
+.txt:focus { 
+    outline: none !important;
+    border: .1rem solid orange;
+    box-shadow: 0 0 1rem orange;
+}
+
+.btnSingIn{
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(58, 173, 240);
+    border: 0;
+    border-radius: .5rem;
+    margin: .5rem;
+    margin-top: 1rem;
+    color: white;
+}
+
+.btnSingIn:hover{
+    background-color: rgba(0, 47, 255, 0.76);
+    cursor: pointer;
+}

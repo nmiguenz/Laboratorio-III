@@ -1,0 +1,103 @@
+.btn
+{
+    background-color: rgba(3, 163, 3, 0.87);
+    color: whitesmoke;
+    width: 50%;
+    padding: 10px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+a
+{
+    /* para que no queden pegados */
+    margin: 5px;
+}
+
+/* Cuando paso el cursor por encima: */
+.btn:hover
+{
+    background-color: rgba(0, 128, 0, 0.76);
+}
+
+#btnAgregarPersona
+{
+    background-color: rgba(3, 163, 3, 0.87);
+    color: whitesmoke;
+    width: 50%;
+    padding: 10px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="text"]
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+table
+{
+    width: 100%;
+    /* border-collapse: collapse;  saco la division */
+}
+th, td
+{
+
+    text-align: left;
+    padding: 8px;
+}
+
+/* Filas pares cambian de color: */
+tr:nth-child(even)
+{
+    background-color: rgb(222, 217, 241);
+}
+
+th
+{
+    background-color: rgb(0, 202, 252);
+    color: azure;
+}
+
+.contenedor
+{
+    /* position: absolute; */
+    width: 50%;
+    border-radius: 5px;
+    background-color: rgba(228, 225, 225, 0.822);
+    padding: 20px;
+    left: 25%;
+    top: 25%;
+    position: fixed;
+    
+    
+}
+
+ /* #tabla
+{
+    position: relative;
+}  */
+
+label
+{
+    font-size: 10pt;
+    
+}
+
+.sinError
+{
+    border: 1px solid #ccc;
+}
+
+.error{
+    border: 1px solid red;
+}

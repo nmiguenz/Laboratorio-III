@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='./node_modules/jquery/dist/jquery.min.js'></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./estilos.css">    
+    <title>Practica segundo parcial</title>
+    <script src="persona.js"></script>
+    <script src="alumno.js"></script>
+    <script src="funciones.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>ABM PERSONA</h1>
+        <div class="row">
+            <div class="col-12">
+                ID <br>
+                <input type="id"  placeholder='Inserte el id'>
+            </div>
+            <div class="col-12">
+                nombre <br>
+                <input id="nombre" type="nombre">
+    
+            </div>
+            <div class="col-12">
+                apellido <br>
+                <input type="apellido" id="apellido">
+    
+            </div>
+            <div class="col-12">
+                edad <br>
+                <input type="edad" id="edad">
+    
+            </div>
+            <div class="col-6 col-sm-12 tipoInput">
+                Legajo <br>
+                <input type="tipo" id="legajo">
+    
+            </div>
+            <div class="col-2">
+                <button class="btn btn-success" onclick="Examen.agregar()">AGREGAR</button>
+
+            </div>
+        </div>
+        <div class="tabla">
+                <h3>Listas de personas</h3>
+                <table id="cabecera-tabla">
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Apelldio</th>
+                        <th>Legajon</th>
+                    </thead>
+                    <tbody id="tabla">
+                        
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</body>
+</html>
+
+<!--namespace test 
+    export function modificar(){}
+ASi lo puedo llamar desde el html => test.func.modificar -->

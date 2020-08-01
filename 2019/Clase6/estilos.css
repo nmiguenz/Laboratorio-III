@@ -1,0 +1,81 @@
+.boton{
+    color: rgb(255, 255, 255);
+    background-color: rgb(39, 126, 36);
+    width: 50%;
+    padding: 14px 20px;
+    border-radius: 2px;
+    margin:8px 0;; /*de los bordes del boton para afuera*/
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.tabla{
+    position: static;
+    height: auto;
+    width: 100%;
+}
+
+.contenedor{
+    width: 50%;
+    position: fixed;
+    bottom: 25%;
+    right: 25%; 
+    background-color: rgb(223, 221, 221); 
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* .contenedor2{
+    position: relative;
+    z-index: 1;
+    background-color: rgb(223, 221, 221); 
+    width: 20%;
+    margin: 200px;
+    padding: 20px;
+} */
+
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/*#name{}
+de esta forma puedo cambiar el estilo po nombre*/
+
+table{
+    border-collapse: collapse;
+    width: 100%
+}
+
+th, td{
+    padding: 8px;
+    text-align: left;
+}
+
+th{
+    background-color: lightseagreen;
+    color: white;
+}
+
+a{
+    margin: 5px;
+}
+
+/*lo que hace es cambiar el color de las filas impares*/
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.error{
+    border: 1px solid red;
+}
+
+.sinError{
+    border: 1px solid green;
+}

@@ -1,0 +1,227 @@
+*,
+*::before,
+*::after{
+    margin:0;
+    padding: 0;
+    font-size: 62.5%;
+    box-sizing: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    box-sizing: border-box;
+    background-color: white;;
+    flex: auto;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.principal {
+    position: absolute;
+    width: 100vw;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.header{
+    width: 100vw;
+    height: 80vh;
+    background-image: url('../../assets/homeOffice.jpg');
+    background-position: center center; /*centro vertical centro horizontal*/
+    background-size: cover;
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedorMenu {  
+    display: flex;  
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menuTitle {
+    margin: 1rem;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;    
+}
+
+.btnMenu {
+    background-color: transparent;
+    border: transparent;
+    margin: 1rem;
+    font-weight: bold;
+    color: white;
+    /* align-self: flex-start; */
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+.btnMenu:hover {
+    background-color: steelblue;
+    cursor: pointer;
+}
+
+.titulos {
+    align-self: center; 
+    color: white;
+    margin: auto;
+    text-shadow: 1rem 1rem black 50%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 5.2rem;
+    margin: .5rem auto;
+}
+
+.subtitle {
+    margin: .5rem auto;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+.hrTitle {
+    width: 15%;
+    background-color: white;
+    margin: .5rem auto;
+    height: .3rem;
+}
+
+/*--------Post--------*/
+.div-form{
+    width: 40rem;
+    height: 30.5rem;
+    position: fixed;
+    margin: 10rem auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: whitesmoke;
+    border-radius: .5rem;
+    border: .1rem solid rgba(0, 0, 0, .15);
+    color: rgb(62, 67, 71);
+    display: flex;
+    flex-direction: column;
+}
+
+.nuevoPostTitle {
+    margin: .5rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+    font-size: 2rem;    
+}
+
+.lblNewPost {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin: .7rem;
+    margin-left: 2rem;
+}
+
+.txtNewPost {
+    width: 95%;
+    margin: .5rem;
+    margin-left: 1rem;
+    border-radius: .3rem;
+    outline: none;
+    border: .1rem solid #cdcdcd;
+    border-color: rgba(0, 0, 0, .15);
+    background-color: white;
+    font-size: 1.6rem;
+}
+
+.txtContenido {
+    height: 5rem;
+}
+
+.separadorNewPost {
+    height: .3rem;
+    width: 95%;
+    margin-left: 1rem;
+    border: 0;
+    background-color: rgba(0, 0, 0, .15);
+}
+
+.btnPostear {
+    align-self: flex-end;
+    width: 7rem;
+    height: 3.5rem;
+    margin: 1rem;
+    border: .1rem solid rgba(0, 0, 0, .15);
+    background-color: whitesmoke;
+    color: rgb(62, 67, 71);
+    font-weight: bold;
+    border-radius: .2rem;
+    float: right;
+    font-size:1.6rem;
+}
+
+.btnPostear:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.imgLoading {
+    position: fixed;
+    margin: 20rem auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-radius: 1rem;
+    width: 10rem;
+    height: 10rem;
+    
+}
+
+/*-----Post-----*/
+.SeccionPosts{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.article{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-start; 
+    width: 50vw;
+
+}
+
+.titlePost{
+    font-size: 2rem; 
+}
+
+.headerPost{
+    font-size: 1.6rem;
+}
+
+.postedBy{
+    font-size: 1.4rem;
+}
+
+.textoPost{
+    font-size: 1.2rem;
+}
+.hrPost{
+    height: .3rem;
+    width: 95%;
+    margin-left: 1rem;
+    border: 0;
+    background-color: rgba(0, 0, 0, .15);
+}
+
+/*--Footer---*/
+footer{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+.footer{
+    padding: 2rem;
+    /* text-align: center; */
+    font-size: 1.5rem;
+}

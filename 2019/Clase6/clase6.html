@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="./funciones.js">
+    </script>
+    <script>
+        // Este es un objeto de tipo json. Siempre estan entre llaves
+        //permite hacer objetos dinamicos sin ningun tipado.
+        var persona= {"nombre" : "Juan", "edad": 34};
+        //asi accedo a los campos
+        //alert(persona.nombre);
+        //alert(persona.edad);
+        
+        //tambien puedo acceder como si  fuera un array. Siempre que este entre [] es array y se accede por indice
+        // los array puden ser de cualquier cosa
+        //alert(persona["edad"]);
+        // dentro del array puedo agregar lo que quiera
+        var lista = [persona, "telefono", "casa"];
+        // Al servidor el objeto JSON va a viajar en formato string y lo vamos a tener que parsear en formato JSON luego.
+        //Propiedad: JSON.stringify - va a transformar el objeto json en string
+        //JSON.parse() - parsea el string a JSON
+    </script>
+    <title>Practica Clase 6</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <button class="botonAgregar" id="agregar" onclick = "mostrar(event)">Agregar</button>
+    <div class="contenedor" id="contenedor" hidden>
+        <label for="name">Nombre</label>
+        <br>
+        <input type="text" name="name" id="name" placeholder="Tu nombre..."/>
+        <br>
+        <label for="apellido">Apellido</label>
+        <br>
+        <input type="text" name="apellido" id="apellido" placeholder="Tu apellido..."/>
+        <br>
+        <label for="Telefono">Teléfono</label>
+        <br>
+        <input type="number" name="telefono" id="telefono" placeholder="N° de teléfono"/>
+        <br>
+        <label for="date">Fecha</label>
+        <br>
+        <input type="date" name="fecha" id="fecha" placeholder="dd/mm/aaaa"/>
+        <br>
+        <input type="submit" class="boton" id="guardar" name="guard" value="Guardar"/>
+    </div>
+    <div class="tabla">
+        <h3>Listas de personas</h3>
+        <table id="table">
+            <thead>SS
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Fecha</th>
+                <th>Acción</th>
+            </thead>
+            <tbody id="tabla">
+                <tr>
+                    <td>Alama</td>
+                    <td>Acosta</td>
+                    <td>47658907</td>
+                    <td>11/09/1985</td>
+                    <td><a href="" onclick="borrar(event)">Borrar</a>
+                        <a href="" onclick="editar(event)">Editar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>asdas</td>
+                    <td>Acoasdassta</td>
+                    <td>47658987</td>
+                    <td>23/07/1925</td>
+                    <td><a href=''  onclick="borrar(event)">Borrar</a>
+                        <a href="" onclick="editar(event)">Editar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<!-- Hacer lo de borrar con eventListener en vez de con onClick -->

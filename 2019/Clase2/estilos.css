@@ -1,0 +1,28 @@
+body{
+    background-color: green;
+}
+h1,h2{ 
+    color: indigo;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif    
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p.negrita{
+    color: chartreuse;
+}
+
+.otraClase{
+    font-style: italic;
+}
+.boton{
+    color: aliceblue;
+    background-color: chocolate;
+    width: 120px;
+    height: 60px;
+    border-radius: 7px;
+    margin:20px; /*de los bordes del boton para afuera*/
+    padding: 2px; /* de los bordes para adentro*/ 
+    cursor: pointer;
+}

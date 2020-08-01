@@ -1,0 +1,11 @@
+
+input{
+    width: 100%;
+    margin:8px 0;; /*de los bordes del boton para afuera*/
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tipoInput{
+    width: 50%;
+}

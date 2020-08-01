@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="./funciones.js">
+    </script>
+    <title>Practica Clase 3</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <label for="name">Nombre</label>
+        <br>
+        <input type="text" name="name" id="name" placeholder="Tu nombre..."/>
+        <br>
+        <label for="apellido">Apellido</label>
+        <br>
+        <input type="text" name="apellido" id="apellido" placeholder="Tu apellido..."/>
+        <br>
+        <input type="submit" class="boton" id="guardar" name="guard" value="Guardar"/>
+    </div>
+        <h3>Listas de personas</h3>
+        <table id="table">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apelldio</th>
+                    <th>Acción</th>
+                </thead>
+                <tbody id="tabla">
+                    <tr>
+                        <td>Alama</td>
+                        <td>Acosta</td>
+                        <td><a href="" onclick="borrar(event)">Borrar</a></td>
+                    </tr>
+                    <tr>
+                        <td>asdas</td>
+                        <td>Acoasdassta</td>
+                        <td><a href=''  onclick="borrar(event)">Borrar</a></td>
+                    </tr>
+                </tbody>
+        </table>
+</body>
+</html>
+
+<!-- Hacer lo de borrar con eventListener en vez de con onClick -->

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // this hace referencia al scope global. Siempre hace referencia a window
+        // aunque a veces puede hacer referencia a otro objeto.
+
+        //apply()
+        //recibe un objeto de tipo json. Y hace que el this, para esa funcion sea el objeto que le paso
+        // a esta funcion le paso un objeto a traves de apply.
+        // puede recibir un array de objects
+
+        //call
+        //solo puede recibir un object, pero es equuivalente a la anterior.
+
+
+        var persona1 = {
+            name = 'carlos',
+            lastName = 'perez'
+        }
+
+        var printName = function(){
+            console.log(this.name+ ' '+this.lastName);
+        }
+
+        printName.apply(persona1);
+
+        $(document).ready(function(){
+
+        });
+
+        //para jquery 'this' hace referencia al objeto que lanzo el evento.
+        $('div').click(function(){
+            $(this).hide();
+            //$(this).show();
+        })
+
+        //fadeIn y fadeOut
+
+        //$.GET Y $.POST solo aceptan peticiones simples.
+        //En get, el key=value debe ir en la url;
+
+        //El post solo acepta objetos json simples
+        //
+        $('.btn').click(function(){
+            $.post( "ajax/test.html", function( data ) {
+            $( ".result" ).html( data );
+            });
+        })
+
+        //para mandar OBJETOS COMPLEJOS se utiliza $.ajax
+        //para GET
+        $.ajax({url: "demo_test.txt", 
+                type: 'POST',
+                data:{
+                    nombre: 'Nico',
+                    apellido: 'mmig',
+
+                },
+                contentType: 'application/x-www-form-urlencoded',
+                success: function(result){
+                $("#div1").html(result);
+        }});
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

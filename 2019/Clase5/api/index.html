@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var http = new XMLHttpRequest();
+
+        //forma con el GET
+
+        // function es una funcion anonima. Solo funciona si se la paso a una variable.
+        http.onreadystatechange = function(){
+            //esto se  va a saber cuando el servidor tenga la respuesta. No se cuando va a ser
+            console.log("llego respuesta", http.readyState, http.status);
+            if (http.readyState ===4){
+                if(http.status ===200){
+                    console.log("Tenemos respuesta", http.responseText);
+
+                }
+            }
+        }
+        http.open('GET', "http://localhost:3000/login");
+        http.send();
+
+
+        //Forma con el POST
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <script type="text/javascript" src="./js/funciones.js"></script>
+    <link rel = "stylesheet" type = "text/css" href= "./css/estilos.css">
+    <title>RECUPERATORIO Primer parcial Laboratorio 3</title>
+</head>
+<body>
+    <div class="contenedor_principal">
+
+        <h3>Listas de personas</h3>
+        <table id="table">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                </thead>
+                <tbody id="tabla">
+                   
+                </tbody>
+        </table>
+        
+        <div class="loadingIcon" id="loadingIcon" hidden><img class="spinner" src="./img/spinner.gif"></div>
+        
+        <div class="contenedor_formulario" id="contenedor_formulario">
+
+            <button class="btnCerrar" id="btnCerrar">X</button>
+            
+            <div class="contenedor_form">
+                <label for="nombre">Nombre</label>
+                <br>
+                <input type="text" id="txtNombre" class="container_nombre sinError" placeholder="Ingrese nombre">
+                <br>
+                <label for="apellido">Apellido</label>
+                <br>
+                <input type="text" id="txtApellido" class="container_apellido sinError" placeholder="Ingrese Apellido">
+                <br>
+                <label for="sexo">Sexo</label>
+                <br>
+                <input type="radio" id="rdFemale" name="radioBtn" id="sexFemale">Femenino
+                <br>
+                <input type="radio" id="rdMale"  name="radioBtn" id="sexMale">Masculino
+            </div>
+
+            <div class="contenedor_botones">
+                <button class="btnEliminar" id="btnEliminar">Eliminar</button>
+                <button class="btnModificar" id="btnModificar">Modificar</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

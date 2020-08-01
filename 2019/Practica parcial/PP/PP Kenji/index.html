@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Primer Parcial</title>
+    <link rel = "stylesheet" type = "text/css" href= "./css/estilosPP.css">
+    <script type="text/javascript" src="./js/funciones.js"></script>    
+</head>
+<body>
+    <div class="containerAll">
+
+        <div id="loadingIcon" class="loader" hidden><img class="loader" src="./img/loading-icon.gif" alt="">
+        </div>
+        
+        <div id="cardContainer" class="cardContainer">
+            
+        </div>
+        
+        <div id="formPP" class="contenedor" hidden>
+            
+            <div class="column">
+
+                <input type="button" id="btnOcultar" value="X" class="boton botonCerrar">
+                <label for="txtNombre">Nombre</label>
+                <input class="sinError" type="text" id="txtNombre" placeholder="Ingresar nombre"> 
+                <label for="txtApellido">Apellido</label>
+                <input class="sinError" type="text" id="txtApellido" placeholder="Ingresar apellido"> 
+                <label>Sexo</label>
+                
+                <div>
+                    <input type="radio" id="radioBtnFemale" name="drone" value="female"
+                    checked>
+                    <label for="huey">Femenino</label>
+                </div>
+                
+                <div>
+                    <input type="radio" id="radioBtnMale" name="drone" value="male">
+                    <label for="dewey">Masculino</label>
+                </div>
+                
+                
+                <div class="row">
+                    <input type="button" id="btnEliminar" value="Eliminar" class="boton">
+                    <input type="button" id="btnModificr" value="Modificar" class="boton">
+                </div>
+            
+            </div>
+        
+        </div>
+    </div>
+    
+</body>
+</html>

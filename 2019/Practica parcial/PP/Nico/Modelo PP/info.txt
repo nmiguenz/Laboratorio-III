@@ -1,0 +1,32 @@
+------
+Temas:
+------
+
+html
+css -> flexbox
+Js  -> ajax (open/change/Post)
+    -> node	
+
+----------
+Funciones:
+----------
+
+Tabla.
+
+Peticiones-> servidores
+
+Login -> form
+
+ABM
+
+spinner
+
+----------
+Sevidor:
+----------
+No hay que pasarle el header!! al hacer el post 
+(esto no se aplica al parcial, donde va tener que pasarle el header)
+
+
+
+

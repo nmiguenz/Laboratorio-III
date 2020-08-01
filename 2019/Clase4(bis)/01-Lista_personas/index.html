@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo Grilla</title>
+    <script type="text/javascript" src="./funciones.js"></script>
+    <link rel="stylesheet" href = "./hoja.css">
+</head>
+<body>
+    <input id="btnAgregarPersona" type="button" value="Agregar Persona">
+    
+    <div id="contenedorPersona" class = "contenedor">
+            <!-- <div id="contenedorTexto">
+                <label for="txtNombre">Nombre</label>
+                <br>
+                <input type="text" name="Nombre" id="txtNombre" placeholder="Tu nombre...">
+                <br>
+                <label for="txtApellido">Apellido</label>
+                <br>
+                <input type="text" name="Apellido" id="txtApellido" placeholder="Tu apellido...">
+                <br>
+                <br>
+            </div>
+            <div id="contenedorBotones">
+                <input type="button" value="Guardar" id="btnGuardar" class="btn">
+                <input type="button" value="Cancelar" id="btnCancelar" class="btn">
+                <br>
+            </div> -->
+            
+                
+            <label for="txtNombre">Nombre</label>
+            <br>
+            <input type="text" name="Nombre" id="txtNombre" placeholder="Tu nombre...">
+            <br>
+            <label for="txtApellido">Apellido</label>
+            <br>
+            <input type="text" name="Apellido" id="txtApellido" placeholder="Tu apellido...">
+            <br>
+            <br>
+            <input type="button" value="Guardar" id="btnGuardar" class="btn">
+            <input type="button" value="Cancelar" id="btnCancelar" class="btn">
+            <br>
+                    
+    </div>
+
+    <div id="tabla">
+
+        
+
+        <h2>Lista personas</h2>
+        <table  width = "600">
+            
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </tr>
+                
+            </thead>
+    
+            <tbody id="tbody">
+                <tr>
+                    <td>Peter</td>
+                    <td>Griffin</td>
+                    <td><a href="" onclick= Borrar(event)>borrar</a><a href="" onclick= Editar(event)>editar</a></td>
+                </tr>
+                
+    
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+</body>
+</html>
