@@ -1,6 +1,6 @@
 //------ Importo la clase anuncio ---------
 import { Anuncio_Auto } from "./anuncio.js";
-import { Etransaccion } from "./Etransaccion.js";
+import { Etransaccion } from "../dist/Etransaccion.js";
 
 //------- BOTONES --------------------------
 let btnCancelar = document.getElementById('btnCancelar');

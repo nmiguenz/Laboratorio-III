@@ -1,5 +1,5 @@
 "use strict";
-export var Etransaccion;
+var Etransaccion;
 (function (Etransaccion) {
     Etransaccion[Etransaccion["venta"] = 0] = "venta";
     Etransaccion[Etransaccion["alquiler"] = 1] = "alquiler";
