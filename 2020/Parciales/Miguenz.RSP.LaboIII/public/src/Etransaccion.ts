@@ -1,4 +1,4 @@
-enum Etransaccion {
+export enum Etransaccion {
     venta,
     alquiler,
     permuta,

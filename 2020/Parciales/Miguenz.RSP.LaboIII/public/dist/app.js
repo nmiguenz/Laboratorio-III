@@ -1,6 +1,6 @@
 //------ Importo la clase anuncio ---------
 import { Anuncio_Auto } from "./anuncio.js";
-import { Etransaccion } from "../dist/Etransaccion.js";
+import { Etransaccion } from "./Etransaccion.js";
 
 //------- BOTONES --------------------------
 let btnCancelar = document.getElementById('btnCancelar');
@@ -13,7 +13,6 @@ let formulario = document.getElementById('myForm');
 let table = document.getElementById('tabla');
 let contentCheckbox = document.getElementById('filtroCheckbox');
 let contentFilterTransaccion = document.getElementById('filtrarTransaccion');
-let contentFilterPrecioMax = document.getElementById('filtrarPrecio');
 
 //------- Variables globales -----------------
 let indiceRow;
@@ -30,15 +29,21 @@ img.setAttribute('src', '../img/volante_spinner.gif');
 img.setAttribute('alt', 'spinner');
 
 
-//-------- EVENTOS -------------------------------
-//window.addEventListener('load', taerLocal);
+//-------- EVENTOS AJAX -------------------------------
+//window.addEventListener('load', traerAjax);
+//formulario.addEventListener('submit', nuevoAnuncio);
+//btnBaja.addEventListener('click', bajaAjax);
+
+//-------- EVENTOS LocalStorage ------------------------------------
 window.addEventListener('load', taerLocalStorage);
 formulario.addEventListener('submit', nuevoAnuncio);
+btnModificar.addEventListener('click', modificarLocalStorage);
 btnCancelar.addEventListener('click', limpiarFormulario);
+btnBaja.addEventListener('click',bajaLocalStorage);
+
 contentCheckbox.addEventListener("click", (event) => modificarChk(event), false);
 contentFilterTransaccion.addEventListener('click', (event) => filtroTransaccion(event), false);
 // btnBaja.addEventListener('click', bajaConJson);
-//contentFilterPrecioMax.addEventListener('click',(event) => precioMaximo(event), false )
 
 //-------- ENUMERADOS -----------------------------
 enumeradoTransaccion('transaccion');
@@ -277,8 +282,9 @@ function nuevoAnuncio(e) {
     let id = arrayAnuncios.length+1;
     let nuevoAnuncio = new Anuncio_Auto(id, titulo, transaccion, descripcion, precio, puertas, kms, potencia);
 
-    //altaAnuncio(nuevoAnuncio);
     altaLocalStorage(nuevoAnuncio);
+    //altaAnuncio(nuevoAnuncio);
+    //altaAjax(nuevoAnuncio);
     location.reload();
 
 }
@@ -294,22 +300,22 @@ function altaAnuncio(anuncio) {
 }
 
 //BAJA
-btnBaja.addEventListener('click', () => {
-    let id = parseInt(arrayAnuncios[indiceRow].id);
+// btnBaja.addEventListener('click', () => {
+//     let id = parseInt(arrayAnuncios[indiceRow].id);
 
-    xhr = server();
-    xhr.open('POST', 'http://localhost:3000/baja');
+//     xhr = server();
+//     xhr.open('POST', 'http://localhost:3000/baja');
 
-    //Le paso un dato como si se lo hubiesemos extraido del formulario 
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     //Le paso un dato como si se lo hubiesemos extraido del formulario 
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    //Si mando mas de una variable
-    //xhr.send(`id=${id}&nombre=`);
-    xhr.send(`id=${id}`);
+//     //Si mando mas de una variable
+//     //xhr.send(`id=${id}&nombre=`);
+//     xhr.send(`id=${id}`);
 
-    //Refresca la pagina donde actua el codigo
-    location.reload();
-});
+//     //Refresca la pagina donde actua el codigo
+//     location.reload();
+// });
 
 function bajaConJson() {
 
@@ -336,32 +342,32 @@ function bajaConJson() {
 }
 
 //MODIFICACION
-btnModificar.addEventListener('click', () => {
-    //event.preventDefault();
-    let id = String(arrayAnuncios[indiceRow].id);
+// btnModificar.addEventListener('click', () => {
+//     //event.preventDefault();
+//     let id = String(arrayAnuncios[indiceRow].id);
 
-    let titulo = document.getElementById("txtTitulo").value;
-    let auxTransaccion = document.getElementById("transaccion");
-    transaccion = auxTransaccion.options[auxTransaccion.selectedIndex].value;
-    let descripcion = document.getElementById("txtDescripcion").value;
-    let precio = parseInt(document.getElementById('txtPrecio').value);
-    let puertas = parseInt(document.getElementById('txtPuertas').value);
-    let kms = parseInt(document.getElementById('txtKm').value);
-    let potencia = parseInt(document.getElementById('txtPotencia').value);
+//     let titulo = document.getElementById("txtTitulo").value;
+//     let auxTransaccion = document.getElementById("transaccion");
+//     transaccion = auxTransaccion.options[auxTransaccion.selectedIndex].value;
+//     let descripcion = document.getElementById("txtDescripcion").value;
+//     let precio = parseInt(document.getElementById('txtPrecio').value);
+//     let puertas = parseInt(document.getElementById('txtPuertas').value);
+//     let kms = parseInt(document.getElementById('txtKm').value);
+//     let potencia = parseInt(document.getElementById('txtPotencia').value);
 
-    arrayAnuncios[indiceRow] = new Anuncio_Auto(id, titulo, transaccion, descripcion, precio, puertas, kms, potencia);
+//     arrayAnuncios[indiceRow] = new Anuncio_Auto(id, titulo, transaccion, descripcion, precio, puertas, kms, potencia);
 
-    xhr = server();
-    xhr.open('POST', 'http://localhost:3000/modificar');
+//     xhr = server();
+//     xhr.open('POST', 'http://localhost:3000/modificar');
 
-    //Le paso un dato como si se lo hubiesemos extraido del formulario 
-    xhr.setRequestHeader("Content-Type", "application/json");
+//     //Le paso un dato como si se lo hubiesemos extraido del formulario 
+//     xhr.setRequestHeader("Content-Type", "application/json");
 
-    //Si mando mas de una variable
-    //xhr.send(`id=${id}&nombre=`);
-    xhr.send(JSON.stringify(arrayAnuncios[indiceRow]));
-    location.reload();
-});
+//     //Si mando mas de una variable
+//     //xhr.send(`id=${id}&nombre=`);
+//     xhr.send(JSON.stringify(arrayAnuncios[indiceRow]));
+//     location.reload();
+// });
 
 //------------------------- LOCAL STORAGE --------------------------------------
 //LOAD LOCAL
@@ -394,16 +400,16 @@ const altaLocalStorage = (item) => {
 };
 
 //BAJA
-btnBaja.addEventListener('click', () => {
+function bajaLocalStorage () {
     let id = parseInt(arrayAnuncios[indiceRow].id);
     let auxAnuncio = arrayAnuncios.filter(item => item.id !== id);
     localStorage.setItem('anuncios', JSON.stringify(auxAnuncio));
     location.reload()
 
-});
+};
 
 //MODIFICACION
-btnModificar.addEventListener('click', ()=>{
+function modificarLocalStorage () {
     //event.preventDefault();
     let id = String(arrayAnuncios[indiceRow].id);
     //let arrayAnunciosAux = [];
@@ -417,10 +423,12 @@ btnModificar.addEventListener('click', ()=>{
     let potencia = parseInt(document.getElementById('txtPotencia').value); 
 
     arrayAnuncios[indiceRow] = new Anuncio_Auto(id,titulo,transaccion,precio,puertas,kms,potencia);
+    console.log(arrayAnuncios[indiceRow]);
+    console.log(arrayAnuncios);
 
     localStorage.setItem('anuncios', JSON.stringify(arrayAnuncios));
-    location.reload();
-});
+    //location.reload();
+};
 
 
 //------------------------- FILTRO DE COLUMNAS (CHK) ----------------------------
@@ -443,7 +451,7 @@ function taerLocal() {
         //agregarRowTableTd(arrayAnuncios, null);
 
     } else {
-        console.log('No hay Lista anuncios en LocalStorage');
+        console.log('No hay lista de filtros en LocalStorage');
     }
 };
 
@@ -523,6 +531,7 @@ const modificarChk = (event) => {
 
 //-------------------------- FILTRAR TRANSACCIONES ------------------------------
 let filtroTransaccion = (event)=>{
+    let flag = true, array, auxArray;
     
     if(event.target.value){
         //PROMEDIO PRECIO
@@ -534,8 +543,6 @@ let filtroTransaccion = (event)=>{
                     anuncio.transaccion == event.target.value)
                     .map(anuncio => anuncio.precio)
                     .reduce((a,b)=>{
-                        console.dir(a);
-                        console.dir(b);
                         return a+b;});
 
         document.getElementById("filtrarPromedio").value = transaccionTotal / numTipoTransaccion.length;
@@ -591,48 +598,76 @@ let filtroTransaccion = (event)=>{
     agregarRowTableTh(arrayHeader);
 
     Object.values(arrayAnuncios).forEach(anuncio => {
+        console.log(arrayAnuncios);
+        console.log(filtroCheckPref);
         if (anuncio.transaccion === event.target.value) {
             let tr = document.createElement("tr");
             tr.setAttribute('onclick', "setIndex(this)");
-            Object.values(anuncio).forEach(item => {
-                let td = document.createElement('td');
-                td.innerHTML = item;
-                tr.appendChild(td)
-            })
-            table.appendChild(tr)
+           
+            if (filtroCheckPref.length) {
+                filtroCheckPref.forEach(field => {
+                    if (flag) {
+                        array = Object.keys(anuncio).filter(item => item !== field.name);
+                        auxArray = array;
+                        flag = false;
+                    } else {
+                        array = auxArray.filter(item => item !== field.name);
+                        auxArray = array
+                    }
+                })
+                array.forEach(item => {
+                    let td = document.createElement('td');
+                    td.innerHTML = anuncio[item];
+                    tr.appendChild(td)
+                })
+            } else {
+                Object.values(anuncio).forEach(item => {
+                    let td = document.createElement('td');
+                    td.innerHTML = item;
+                })
+            }
+            table.appendChild(tr);
         }
     });
-    
+
 }
 
 
 // -------------------- AJAX con Async y await ----------------------------------
 //Traer con FETCH
-const traerAjax = async () => {
+async function traerAjax (){
     try {
         let datos = await fetch('http://localhost:3000/traer')
-        let data = await datos.json();
-        console.log(data.data);
-        personas = data.data;
+        console.dir(datos);
+        let {data} = await datos.json(); //Me trae solo lo que dice data
+        console.dir(data);
+
+        arrayAnuncios = data;
+        
+        taerLocal();
+
+        agregarRowTableTh(arrayHeader);
+        agregarRowTableTd(arrayAnuncios);
     } catch (error) {
         console.error(error);
     }
-}
+} //Funciona
 
-const altaAjax = async (item) => {
+async function altaAjax (anuncio){
 
     try {
         let datos = await fetch('http://localhost:3000/alta', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(item)
+            body: JSON.stringify(anuncio)
         });
-        let data = await datos.json();
-        console.log(data.data);
+        console.dir(datos);
+        let {data} = await datos.json();
+        console.dir(data);
     } catch (error) {
         console.error(error);
     }
-}
+}//Funciona
 
 const modificarAjax = async (item) => {
     
@@ -647,9 +682,10 @@ const modificarAjax = async (item) => {
     } catch (error) {
         console.error(error);
     }
-}
+}//Error
 
-const bajaAjax = async (id) => {
+async function bajaAjax () {
+    let id = parseInt(arrayAnuncios[indiceRow].id);
     try {
         let datos = await fetch('http://localhost:3000/baja', {
             method: 'POST',
@@ -661,4 +697,4 @@ const bajaAjax = async (id) => {
     } catch (error) {
         console.error(error);
     }
-}
+}//Error

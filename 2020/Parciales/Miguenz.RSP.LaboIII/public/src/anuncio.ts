@@ -1,9 +1,9 @@
 class Anuncio{
-    public id:number;
-    public titulo:string;
-    public transaccion:string;
-    public descripcion:string;
-    public precio:number;
+    id:number;
+    titulo:string;
+    transaccion:string;
+    descripcion:string;
+    precio:number;
 
     constructor(id:number, titulo:string, transaccion:string, descripcion:string, precio:number){
         this.id = id;
@@ -14,10 +14,10 @@ class Anuncio{
     }
 }
 
-export default class Anuncio_Auto extends Anuncio {
-    public num_puertas:number;
-    public num_kms:number;
-    public potencia:number;
+class Anuncio_Auto extends Anuncio {
+    num_puertas:number;
+    num_kms:number;
+    potencia:number;
   
     constructor(id:number, titulo:string, transaccion:string, descripcion:string, precio:number, num_puertas:number, num_kms:number, potencia:number){
         super(id, titulo, transaccion, descripcion, precio);
@@ -26,3 +26,5 @@ export default class Anuncio_Auto extends Anuncio {
         this.potencia = potencia;
     }
 }
+
+export { Anuncio_Auto };
