@@ -2,98 +2,61 @@
 import { Anuncio_Auto } from "./anuncio.js";
 import { Etransaccion } from "./Etransaccion.js";
 
-let spinner = document.getElementById('spinner');
-let formulario = document.getElementById('myForm');
+//------- BOTONES --------------------------
 let btnCancelar = document.getElementById('btnCancelar');
 let botonesTabla = document.getElementById('botonesTabla');
 let btnBaja = document.getElementById('btnBaja');
 let btnModificar = document.getElementById('btnEditar');
+
+//------- COMPONENTES -----------------------
+let formulario = document.getElementById('myForm');
 let table = document.getElementById('tabla');
 let contentCheckbox = document.getElementById('filtroCheckbox');
 let contentFilterTransaccion = document.getElementById('filtrarTransaccion');
 let contentFilterPrecioMax = document.getElementById('filtrarPrecio');
 
+//------- Variables globales -----------------
 let indiceRow;
 let arrayAnuncios;
 let filtroCheckPref = [];
 let transaccion;
 let xhr;
-
 let arrayHeader = ["id", "titulo", "transaccion", "descripcion", "precio", "num_puertas", "num_kms", "potencia"];
 
-//Info para setear el spinner dinamicamente
+//-------- SPINNER -------------------------------
+let spinner = document.getElementById('spinner');
 let img = document.createElement('img');
 img.setAttribute('src', '../img/volante_spinner.gif');
 img.setAttribute('alt', 'spinner');
 
+
+//-------- EVENTOS -------------------------------
 //window.addEventListener('load', taerLocal);
-window.addEventListener('load', traerAnuncios);
+window.addEventListener('load', taerLocalStorage);
 formulario.addEventListener('submit', nuevoAnuncio);
 btnCancelar.addEventListener('click', limpiarFormulario);
-btnBaja.addEventListener('click', bajaConJson);
 contentCheckbox.addEventListener("click", (event) => modificarChk(event), false);
-contentFilterTransaccion.addEventListener('click', (event) => promedioTransaccion(event), false);
-contentFilterPrecioMax.addEventListener('click',(event) => precioMaximo(event), false )
+contentFilterTransaccion.addEventListener('click', (event) => filtroTransaccion(event), false);
+// btnBaja.addEventListener('click', bajaConJson);
+//contentFilterPrecioMax.addEventListener('click',(event) => precioMaximo(event), false )
 
+//-------- ENUMERADOS -----------------------------
 enumeradoTransaccion('transaccion');
 enumeradoTransaccion('filtrarTransaccion');
-
-//Instancia del objeto XMLHttpRequest
-//Acceso al estado del SERVIDOR
-function server() {
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4) {
-            spinner.removeChild(img);
-            if (xhr.status == 200) {
-
-                console.log(JSON.parse(xhr.responseText));
-            }
-            else {
-                console.log(xhr.status + " " + xhr.statusText);
-            }
-        }
-        else {
-            spinner.appendChild(img);
-        }
-
+function enumeradoTransaccion(id){
+    let select = document.getElementById(id);
+    for (const key in Etransaccion) {
+      if(isNaN(key)){
+        let option = document.createElement('option');
+        let texto = document.createTextNode(key);
+        option.appendChild(texto);
+        option.setAttribute('value', key);
+        select.appendChild(option);
+      }
     }
-    return xhr;
 }
 
-//CARGA la lista cuando termino el load de la pagina
-function traerAnuncios() {
-    let xhr = new XMLHttpRequest();
-
-    xhr.onreadystatechange = () => {
-
-        if (xhr.readyState == 4) {
-            spinner.removeChild(img);
-            if (xhr.status == 200) {
-
-                arrayAnuncios = JSON.parse(xhr.responseText).data;
-                console.log(JSON.parse(xhr.responseText).message)
-                console.dir(arrayAnuncios);
-                taerLocal();
-
-                agregarRowTableTh(arrayHeader);
-                agregarRowTableTd(arrayAnuncios);
-                
-
-            }
-            else {
-                console.log(xhr.status + " " + xhr.statusText);
-            }
-        }
-        else {
-            spinner.appendChild(img);
-        }
-
-    }
-    xhr.open('GET', 'http://localhost:3000/traer');
-    xhr.send();
-}
+//-------------------------------------- FUNCIONES -------------------------------------------------
 
 //Agrega un renglon de la tabla (th),
 const agregarRowTableTh = (element) => {
@@ -127,7 +90,7 @@ const agregarRowTableTh = (element) => {
 //Agrega los dinamicamente los campos del JSON a la tabla
 const agregarRowTableTd = (arrayAnuncios, arrayHeader) => {
 
-    //----------addd--------------------
+    //----------add--------------------
     let array = [];
 
     if (arrayHeader) {
@@ -224,47 +187,7 @@ window.setIndex = (e) => {
     completarCamposAnuncio();
 }
 
-//Instancia un nuevo objeto propiedad
-function nuevoAnuncio(e) {
-    e.preventDefault();
-
-    let titulo = document.getElementsByName('titulo')[0].value;
-    let auxTransaccion = document.getElementById("transaccion");
-    transaccion = auxTransaccion.options[auxTransaccion.selectedIndex].value;
-    let descripcion = document.getElementsByName('descripcion')[0].value;
-    let precio = parseInt(document.getElementsByName('precio')[0].value);
-    let puertas = parseInt(document.getElementsByName('puertas')[0].value);
-    let kms = parseInt(document.getElementsByName('km')[0].value);
-    let potencia = parseInt(document.getElementsByName('potencia')[0].value);
-
-    let nuevoAnuncio = new Anuncio_Auto(null, titulo, transaccion, descripcion, precio, puertas, kms, potencia);
-
-    // //Objeto para local
-    // let id;
-    // if(!arrayAnuncios){
-    //     id = 1;
-    // }
-    // else{
-    //     id = arrayAnuncios.length+1;
-    // }
-
-    // let nuevoAnuncio = new Anuncio(id,titulo,transaccion,precio,puertas,kms,potencia);
-
-    //altaAnuncio(nuevoAnuncio);
-    altaLocal(nuevoAnuncio);
-    location.reload();
-
-}
-
-//Da de ALTA un anuncio en el servidor
-function altaAnuncio(anuncio) {
-    xhr = server();
-    xhr.open('POST', 'http://localhost:3000/alta');
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify(anuncio));
-
-    //location.reload();
-}
+//------------------------- FORMULARIO -----------------------------------
 
 //Limpia el formulario al presionar CANCELAR
 function limpiarFormulario() {
@@ -283,23 +206,110 @@ function completarCamposAnuncio() {
     document.getElementById("txtPotencia").value = arrayAnuncios[indiceRow].potencia;
 }
 
-//BAJA logica del anuncio en el SERVIDOR
-// btnBaja.addEventListener('click', () => {
-//     let id = parseInt(arrayAnuncios[indiceRow].id);
+//-------------------------- ABM SERVER -----------------------------------
+//Instancia del objeto XMLHttpRequest
+//Acceso al estado del SERVIDOR
+function server() {
+    let xhr = new XMLHttpRequest();
 
-//     xhr = server();
-//     xhr.open('POST', 'http://localhost:3000/baja');
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4) {
+            spinner.removeChild(img);
+            if (xhr.status == 200) {
 
-//     //Le paso un dato como si se lo hubiesemos extraido del formulario 
-//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                console.log(JSON.parse(xhr.responseText));
+            }
+            else {
+                console.log(xhr.status + " " + xhr.statusText);
+            }
+        }
+        else {
+            spinner.appendChild(img);
+        }
 
-//     //Si mando mas de una variable
-//     //xhr.send(`id=${id}&nombre=`);
-//     xhr.send(`id=${id}`);
+    }
+    return xhr;
+}
 
-//     //Refresca la pagina donde actua el codigo
-//     location.reload();
-// });
+//CARGA la lista cuando termino el load de la pagina
+function traerAnuncios() {
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = () => {
+
+        if (xhr.readyState == 4) {
+            spinner.removeChild(img);
+            if (xhr.status == 200) {
+
+                arrayAnuncios = JSON.parse(xhr.responseText).data;
+                taerLocal();
+
+                agregarRowTableTh(arrayHeader);
+                agregarRowTableTd(arrayAnuncios);
+                
+
+            }
+            else {
+                console.log(xhr.status + " " + xhr.statusText);
+            }
+        }
+        else {
+            spinner.appendChild(img);
+        }
+
+    }
+    xhr.open('GET', 'http://localhost:3000/traer');
+    xhr.send();
+}
+
+//Instancia un nuevo objeto ANUNCIO
+function nuevoAnuncio(e) {
+    e.preventDefault();
+
+    let titulo = document.getElementsByName('titulo')[0].value;
+    let auxTransaccion = document.getElementById("transaccion");
+    transaccion = auxTransaccion.options[auxTransaccion.selectedIndex].value;
+    let descripcion = document.getElementsByName('descripcion')[0].value;
+    let precio = parseInt(document.getElementsByName('precio')[0].value);
+    let puertas = parseInt(document.getElementsByName('puertas')[0].value);
+    let kms = parseInt(document.getElementsByName('km')[0].value);
+    let potencia = parseInt(document.getElementsByName('potencia')[0].value);
+    let id = arrayAnuncios.length+1;
+    let nuevoAnuncio = new Anuncio_Auto(id, titulo, transaccion, descripcion, precio, puertas, kms, potencia);
+
+    //altaAnuncio(nuevoAnuncio);
+    altaLocalStorage(nuevoAnuncio);
+    location.reload();
+
+}
+
+//ALTA
+function altaAnuncio(anuncio) {
+    xhr = server();
+    xhr.open('POST', 'http://localhost:3000/alta');
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(anuncio));
+
+    //location.reload();
+}
+
+//BAJA
+btnBaja.addEventListener('click', () => {
+    let id = parseInt(arrayAnuncios[indiceRow].id);
+
+    xhr = server();
+    xhr.open('POST', 'http://localhost:3000/baja');
+
+    //Le paso un dato como si se lo hubiesemos extraido del formulario 
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    //Si mando mas de una variable
+    //xhr.send(`id=${id}&nombre=`);
+    xhr.send(`id=${id}`);
+
+    //Refresca la pagina donde actua el codigo
+    location.reload();
+});
 
 function bajaConJson() {
 
@@ -310,7 +320,6 @@ function bajaConJson() {
         method: 'POST',
         data: `id=${id}`,
         contentType: 'application/x-www-form-urlencoded',
-        timeout: 3000,
         success: function (resultado) {
             console.log(JSON.parse(resultado).message);
             alert('Baja exitosa');
@@ -326,7 +335,7 @@ function bajaConJson() {
     });
 }
 
-//MODIFICA el anuncio en el SERVIDOR
+//MODIFICACION
 btnModificar.addEventListener('click', () => {
     //event.preventDefault();
     let id = String(arrayAnuncios[indiceRow].id);
@@ -354,7 +363,74 @@ btnModificar.addEventListener('click', () => {
     location.reload();
 });
 
-//----Local Storage-----
+//------------------------- LOCAL STORAGE --------------------------------------
+//LOAD LOCAL
+function taerLocalStorage() {
+    let auxArrayAnuncios = JSON.parse(localStorage.getItem('anuncios')) || [];
+    
+    if(auxArrayAnuncios){        
+        arrayAnuncios = auxArrayAnuncios?.map(item => new Anuncio_Auto(item.id, item.titulo, item.transaccion, item.descripcion, item.precio, item.num_puertas, item.num_kms, item.potencia));
+        
+        taerLocal(); //Trae los FILTROS
+
+        agregarRowTableTh(arrayHeader);
+        agregarRowTableTd(arrayAnuncios);
+
+    }
+    else {
+        console.log('No hay Lista anuncios en LocalStorage');
+    }
+};
+
+//ALTA
+const altaLocalStorage = (item) => {
+    if (arrayAnuncios) {
+        arrayAnuncios.push(item)
+    } else {
+        arrayAnuncios = [item]
+    }
+    localStorage.setItem('anuncios', JSON.stringify(arrayAnuncios));
+    location.reload()
+};
+
+//BAJA
+btnBaja.addEventListener('click', () => {
+    let id = parseInt(arrayAnuncios[indiceRow].id);
+    let auxAnuncio = arrayAnuncios.filter(item => item.id !== id);
+    localStorage.setItem('anuncios', JSON.stringify(auxAnuncio));
+    location.reload()
+
+});
+
+//MODIFICACION
+btnModificar.addEventListener('click', ()=>{
+    //event.preventDefault();
+    let id = String(arrayAnuncios[indiceRow].id);
+    //let arrayAnunciosAux = [];
+
+    let titulo = document.getElementById("txtTitulo").value;
+    let auxTransaccion = document.getElementById("transaccion");
+    transaccion = auxTransaccion.options[auxTransaccion.selectedIndex].value;
+    let precio = parseInt(document.getElementById('txtPrecio').value);
+    let puertas = parseInt(document.getElementById('txtPuertas').value);
+    let kms = parseInt(document.getElementById('txtKm').value);
+    let potencia = parseInt(document.getElementById('txtPotencia').value); 
+
+    arrayAnuncios[indiceRow] = new Anuncio_Auto(id,titulo,transaccion,precio,puertas,kms,potencia);
+
+    localStorage.setItem('anuncios', JSON.stringify(arrayAnuncios));
+    location.reload();
+});
+
+
+//------------------------- FILTRO DE COLUMNAS (CHK) ----------------------------
+//Alta local de los objetos
+const altaLocal = (array) => {
+    localStorage.setItem('listaAnuncios', JSON.stringify(array));
+    //location.reload()
+};
+
+//Trae la lista de filtros
 function taerLocal() {
     filtroCheckPref = JSON.parse(localStorage.getItem('listaAnuncios')) || [];
 
@@ -370,174 +446,6 @@ function taerLocal() {
         console.log('No hay Lista anuncios en LocalStorage');
     }
 };
-
-// function guardarColumnasLocal(item){
-//     if (arrayAnuncios) {
-//         arrayAnuncios.push(item);
-//     } else {
-//         arrayAnuncios = [item]
-//     }
-//     localStorage.setItem('listaAnuncios', JSON.stringify(arrayAnuncios));
-//     console.log('Carga Exitosa');
-//     location.reload()
-// };
-
-//Alta local FUNCIONANDO
-const altaLocal = (array) => {
-    localStorage.setItem('listaAnuncios', JSON.stringify(array));
-    //location.reload()
-};
-
-// //Baja LOCAL
-btnBaja.addEventListener('click', () => {
-    let id = parseInt(arrayAnuncios[indiceRow].id);
-    let auxAnuncio = arrayAnuncios.filter(item => item.id !== id);
-    localStorage.setItem('listaAnuncios', JSON.stringify(auxAnuncio));
-    location.reload()
-
-});
-
-// //MODIFICACION LOCAL
-// btnModificar.addEventListener('click', ()=>{
-//     //event.preventDefault();
-//     let id = String(arrayAnuncios[indiceRow].id);
-//     let arrayAnunciosAux = [];
-
-//     let titulo = document.getElementById("txtTitulo").value;
-//     let auxTransaccion = document.getElementById("transaccion");
-//     transaccion = auxTransaccion.options[auxTransaccion.selectedIndex].value;
-//     let precio = parseInt(document.getElementById('txtPrecio').value);
-//     let puertas = parseInt(document.getElementById('txtPuertas').value);
-//     let kms = parseInt(document.getElementById('txtKm').value);
-//     let potencia = parseInt(document.getElementById('txtPotencia').value); 
-
-//     arrayAnuncios[indiceRow] = new Auto(id,titulo,transaccion,precio,puertas,kms,potencia);
-//     console.dir([arrayAnuncios[indiceRow]]);
-//     localStorage.setItem('listaAnuncios', JSON.stringify(arrayAnuncios[indiceRow]));
-
-//     location.reload();
-// });
-
-//---------------------------
-function enumeradoTransaccion(id){
-    let select = document.getElementById(id);
-    for (const key in Etransaccion) {
-      if(isNaN(key)){
-        let option = document.createElement('option');
-        let texto = document.createTextNode(key);
-        option.appendChild(texto);
-        option.setAttribute('value', key);
-        console.log(option);
-        select.appendChild(option);
-      }
-    }
-  }
-
-let promedioTransaccion = (event)=>{
-    console.dir(event.target.value);
-    
-    if(event.target.value){
-        let numTipoTransaccion = arrayAnuncios.filter(anuncio =>     
-            anuncio.transaccion == event.target.value);
-    
-        console.dir(arrayAnuncios);
-        let transaccionTotal = arrayAnuncios.filter(anuncio =>     
-                    anuncio.transaccion == event.target.value)
-                    .map(anuncio => anuncio.precio)
-                    .reduce((a,b)=>{
-                        console.dir(a);
-                        console.dir(b);
-                        return a+b;});
-    
-        console.dir(transaccionTotal);
-        console.dir(numTipoTransaccion);
-        document.getElementById("filtrarPromedio").value = transaccionTotal / numTipoTransaccion.length;
-    }
-
-    table.innerHTML = '';
-    agregarRowTableTh(arrayHeader);
-
-    Object.values(arrayAnuncios).forEach(anuncio => {
-        if (anuncio.transaccion === event.target.value) {
-            let tr = document.createElement("tr");
-            tr.setAttribute('onclick', "setIndex(this)");
-            Object.values(anuncio).forEach(item => {
-                let td = document.createElement('td');
-                td.innerHTML = item;
-                tr.appendChild(td)
-            })
-            table.appendChild(tr)
-        }
-    });
-    
-}
-
-//Filtra el precio mas alto
-let precioMaximo = (event) => {
-    console.log(event.target.value);
-
-    if (event.target.value == 'maximo') {
-
-        let precio = arrayAnuncios.reduce(function(max, item) {
-            if(item.precio > max){
-                return max = item.precio;
-            }
-            else{
-                return max;
-            }  
-            
-        },0);
-
-        document.getElementById("filtrarResultado").value = precio;
-    }
-    else if(event.target.value == 'minimo') {
-
-        let precio = arrayAnuncios.reduce(function(min, item) {
-            if(item.precio < min){
-                return min = item.precio;
-            }
-            else{
-                return min;
-            }  
-            
-        },30000000);
-
-        document.getElementById("filtrarResultado").value = precio;
-    }
-    else if (event.target.value == 'potencia'){
-
-        let potenciaTotal = arrayAnuncios.reduce(function(acum, item) {
-            if(item.potencia > 0){
-                return acum + item.potencia;
-            }
-            else{
-                return acum;
-            } 
-            
-        },0);
-        console.log(potenciaTotal);
-    
-        document.getElementById("filtrarResultado").value = potenciaTotal / arrayAnuncios.length;
-    }
-
-
-    // table.innerHTML = '';
-    // agregarRowTableTh(arrayHeader);
-
-    // Object.values(arrayAnuncios).forEach(anuncio => {
-    //     if (anuncio.transaccion === event.target.value) {
-    //         let tr = document.createElement("tr");
-    //         tr.setAttribute('onclick', "setIndex(this)");
-    //         Object.values(anuncio).forEach(item => {
-    //             let td = document.createElement('td');
-    //             td.innerHTML = item;
-    //             tr.appendChild(td)
-    //         })
-    //         table.appendChild(tr)
-    //     }
-    // });
-
-}
 
 // Al seleccionar un CheckBox oculta el campo
 // Falta solucionar la carga de los datos
@@ -610,5 +518,147 @@ const modificarChk = (event) => {
         altaLocal(filtroCheckPref);
         agregarRowTableTh(arrayHeader);
         agregarRowTableTd(arrayAnuncios, arrayHeader);
+    }
+}
+
+//-------------------------- FILTRAR TRANSACCIONES ------------------------------
+let filtroTransaccion = (event)=>{
+    
+    if(event.target.value){
+        //PROMEDIO PRECIO
+        let numTipoTransaccion = arrayAnuncios.filter(anuncio =>     
+            anuncio.transaccion == event.target.value);
+    
+        console.dir(arrayAnuncios);
+        let transaccionTotal = arrayAnuncios.filter(anuncio =>     
+                    anuncio.transaccion == event.target.value)
+                    .map(anuncio => anuncio.precio)
+                    .reduce((a,b)=>{
+                        console.dir(a);
+                        console.dir(b);
+                        return a+b;});
+
+        document.getElementById("filtrarPromedio").value = transaccionTotal / numTipoTransaccion.length;
+
+        //Precio MAXIMO
+        let precio = arrayAnuncios.filter(anuncio =>     
+                anuncio.transaccion == event.target.value)
+                .reduce(function(max, item) {
+                if(item.precio > max){
+                    return max = item.precio;
+                }
+                else{
+                    return max;
+                }  
+                
+            },0);
+
+        document.getElementById("filtrarMax").value = precio;
+
+        //Precio MINIMO
+        let precioMin = arrayAnuncios.filter(anuncio =>     
+                anuncio.transaccion == event.target.value)
+                .reduce(function(min, item) {
+                    if(item.precio < min){
+                        return min = item.precio;
+                    }
+                    else{
+                        return min;
+                    }  
+                    
+                },30000000);
+
+        document.getElementById("filtrarMin").value = precioMin;
+       
+        //POTENCIA
+        let potenciaTotal = arrayAnuncios.filter(anuncio =>     
+                anuncio.transaccion == event.target.value)
+                .reduce(function(acum, item) {
+                    if(item.potencia > 0){
+                        return acum + item.potencia;
+                    }
+                    else{
+                        return acum;
+                    } 
+                    
+                },0);
+    
+        document.getElementById("filtrarPotencia").value = potenciaTotal / numTipoTransaccion.length;
+        
+    }
+
+    table.innerHTML = '';
+    agregarRowTableTh(arrayHeader);
+
+    Object.values(arrayAnuncios).forEach(anuncio => {
+        if (anuncio.transaccion === event.target.value) {
+            let tr = document.createElement("tr");
+            tr.setAttribute('onclick', "setIndex(this)");
+            Object.values(anuncio).forEach(item => {
+                let td = document.createElement('td');
+                td.innerHTML = item;
+                tr.appendChild(td)
+            })
+            table.appendChild(tr)
+        }
+    });
+    
+}
+
+
+// -------------------- AJAX con Async y await ----------------------------------
+//Traer con FETCH
+const traerAjax = async () => {
+    try {
+        let datos = await fetch('http://localhost:3000/traer')
+        let data = await datos.json();
+        console.log(data.data);
+        personas = data.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const altaAjax = async (item) => {
+
+    try {
+        let datos = await fetch('http://localhost:3000/alta', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(item)
+        });
+        let data = await datos.json();
+        console.log(data.data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const modificarAjax = async (item) => {
+    
+    try {
+        let datos = await fetch('http://localhost:3000/modificar', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(item)
+        });
+        let data = await datos.json();
+        console.log(data.data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const bajaAjax = async (id) => {
+    try {
+        let datos = await fetch('http://localhost:3000/baja', {
+            method: 'POST',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `id=${id}`
+        });
+        let data = await datos.json();
+        console.log(data.data);
+    } catch (error) {
+        console.error(error);
     }
 }

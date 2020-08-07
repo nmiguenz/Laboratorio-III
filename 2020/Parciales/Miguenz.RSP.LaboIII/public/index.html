@@ -86,18 +86,69 @@
                 <input type="number" name="potencia" id="txtPotencia" min="0" class="form-control" placeholder="Potencia" required>
 
             
-                <button type="submit" value="Guardar" class="btn btn-success">
-                    <img src="./img/salvar.png" alt="diskette" height="22px">
-                    Guardar
-                </button>
+                <div class="row">
+                    <button type="submit" value="Guardar" class="btn btn-success">
+                        <img src="./img/salvar.png" alt="diskette" height="22px">
+                        Guardar
+                    </button>
+                    <div id="botonesTabla" style="display: none;">
+            
+                        
+                            <button id="btnEditar" class="btn btn-warning">Modificar</button>
+                            <button id='btnBaja' class="btn btn-danger">Eliminar</button>
+                            <button type="reset"  id='btnCancelar' class="btn btn-dark">Cancelar</button>
+                    </div>
+                </div>
                 
             </form>
         </fieldset>
 
 
+        <!-- FILTROS -->
+        <div class="form filterBox">
+            <div class="card-body container border rounded filtros">
+                <div class="row align-items-center">
+                    <div class="div_transaccion col">
+                        <label for="filtrarTransaccion">FILTRAR TRANSACCION:</label>
+                        <select class="content__form-input custom-select" name="filtrarTransaccion" id="filtrarTransaccion">
+                            <option value="" disabled selected>---Elegir---</option>
+                            <!-- <option value="alquiler">Alquiler</option>
+                            <option value="venta">Venta</option>
+                            <option value="permuta">Permuta</option> -->
+                        </select>
+                    </div>
+                    <div class="div_promedio col">
+                        <label for="filtrarPromedio">PROMEDIO PRECIO: </label>
+                        <br>
+                        <input class="content__form-input form-control" name="promedio" type="text" id="filtrarPromedio" placeholder="N/A" readonly  />
+                        
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="div_transaccion col">
+                        <label for="filtrarPotencia">POTENCIA: </label>
+                        <br>
+                        <input class="content__form-input form-control" name="potencia" type="text" id="filtrarPotencia" placeholder="N/A" readonly  />
+                    </div>
+                    <div class="div_transaccion col">
+
+                        <label for="filtrarMax">PRECIO MÁXIMO: </label>
+                        <br>
+                        <input class="content__form-input form-control" name="velociadadMax" type="text" id="filtrarMax" placeholder="N/A" readonly  />
+                    </div>
+                    <div class="div_transaccion col">
+
+                        <label for="filtrarMin">PRECIO MÍNIMO </label>
+                        <br>
+                        <input class="content__form-input form-control" name="velocidadMin" type="text" id="filtrarMin" placeholder="N/A" readonly  />
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- checkbox -->
         <div class="row mt-4 filterShow__checkbox container" id='filtroCheckbox'>
-            <div class="col form"> 
+
                 <div class="checkboxContainer form py-3 d-flex justify-content-around flex-wrap">
                     
                     <div class="custom-control custom-checkbox custom-control-inline">
@@ -134,75 +185,21 @@
                         <input type="checkbox" class="custom-control-input" id="potenciaChk" value="potenciaChk" checked>
                         <label class="custom-control-label" for="potenciaChk">Potencia</label>
                     </div>
-                    
                 </div>
-                <div class="mt-2 justify-content-around" style="display: flex;">
-                    <button class="btn btn-succcess align-self-center" id="btnPreferencias" ></button>
-                </div>
-            </div>
         </div>
+        
 
-        <div id="botonesTabla" style="display: none;" class="container">
-            
-            <div  class="d-flex flex-row justify-content-start">
-                <button id="btnEditar" class="btn btn-warning">Modificar</button>
-                <button id='btnBaja' class="btn btn-danger">Eliminar</button>
-                <button type="reset"  id='btnCancelar' class="btn btn-dark">Cancelar</button>
-            </div>
-        </div>
-
-        <!-- FILTROS -->
-        <div class="form filterBox">
-            <div class="card-body container border rounded filtros">
-                <div class="row align-items-center">
-                    <div class="div_transaccion col">
-                        <label for="filtrarTransaccion">FILTRAR TRANSACCION:</label>
-                        <select class="content__form-input custom-select" name="filtrarTransaccion" id="filtrarTransaccion">
-                            <option value="" disabled selected>---Elegir---</option>
-                            <!-- <option value="alquiler">Alquiler</option>
-                            <option value="venta">Venta</option>
-                            <option value="permuta">Permuta</option> -->
-                            <option value="potencia">Potencia</option>
-                        </select>
-                    </div>
-                    <div class="div_promedio col">
-                        <label for="filtrarPromedio">PROMEDIO/POTENCIA: </label>
-                        <br>
-                        <input class="content__form-input form-control" name="promedio" type="text" id="filtrarPromedio" placeholder="N/A" readonly  />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form filterBox">
-            <div class="card-body container border rounded filtros">
-                <div class="row align-items-center">
-                    <div class="div_precio col">
-                        <label for="filtrarPrecio">PRECIO:</label>
-                        <select class="content__form-input custom-select" name="filtrarPrecio" id="filtrarPrecio">
-                            <option value="" disabled selected>---Elegir---</option>
-                            <option value="maximo">Precio Maximo</option>
-                            <option value="minimo">Precio Minimo</option>
-                            <option value="potencia">Potencia</option>
-                        </select>
-                    </div>
-                    <div class="div_promedio col">
-                        <label for="filtrarResultado">RESULTADO</label>
-                        <br>
-                        <input class="content__form-input form-control" name="promedio" type="text" id="filtrarResultado" placeholder="N/A" readonly  />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="spinner"></div>
+        <!-- SPINNER -->
+        <!-- <div class="spinner"></div> -->
 
         <div id="divTabla" class="container">
             <table id="tabla" class="table table-bordered table-striped table-hover">
                 
             </table>
         </div>
-        <div id="spinner"></div>
+        <!-- <div id="spinner"></div> -->
 
+        <!-- FOOTER -->
         <div class="row justify-content-center">
             <div class="container-fluid">
                 <div id="footer" class="col-12 footer bg-dark d-flex d-inline-flex flex-row align-items-center justify-content-around mt-5">
